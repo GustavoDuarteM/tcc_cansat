@@ -50,7 +50,7 @@ void setup(){
 }
 
 void loop(void){
-  if (radio.available()){
+  if (radio.available()){    
     uint8_t len = radio.getDynamicPayloadSize();
     if(len == sizeof(MQ135_package)){  
       listening_MQ135();
@@ -83,7 +83,7 @@ void listening_accelerometer(){
   }
 }
 
-void  listening_bmp(){
+void listening_bmp(){
   BMP_package data; 
   radio.read(&data, sizeof(data));
 
@@ -93,7 +93,7 @@ void  listening_bmp(){
     Serial.print("|  Altitude: "); Serial.print(data.Altitude);Serial.println("m");
     Serial.print("|  Pressão Atmosférica: "); Serial.print(data.Pressao);Serial.println(" Pa");
     Serial.println("|");
-
+    Serial.println(" ------------------------------------");
     set_step(data.type);
   }
 }
@@ -103,6 +103,8 @@ void listening_MQ135(){
   radio.read(&data, sizeof(data));
 
   if(next_type == 0){
+    Serial.println("|  Leituras: "); 
+    Serial.println(" ------------------------------------");
     Serial.println("|  MQ135 "); 
     Serial.print("|  Monóxido de carbono: "); Serial.println(data.CO);
     Serial.print("|  Dióxido de carbono: "); Serial.println(data.CO2 + 400);
