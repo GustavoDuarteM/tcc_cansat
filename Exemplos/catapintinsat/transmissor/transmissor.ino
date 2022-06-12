@@ -69,10 +69,13 @@ void setup(){
 void loop(void){
   /* BMP data */
   read_bmp_data();
+  delay(1000);
   /* MQ135 data */ 
   read_MQ135_data();
+  delay(1000);
   /*accelerometer data*/
   read_accelerometer_data();
+  delay(1000);
 }
 
 void start_accelerometer(){
