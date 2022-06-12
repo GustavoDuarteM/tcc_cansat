@@ -70,6 +70,7 @@ void listening_accelerometer(){
   radio.read(&data, sizeof(data));
 
 //Envia valores lidos do acelerômetro
+  Serial.println("|  Acelerômetro"); 
   Serial.print("|  Acel:"); 
   Serial.print("  X:");Serial.print(data.acelX);
   Serial.print(" Y:");Serial.print(data.acelY);
@@ -80,24 +81,28 @@ void listening_accelerometer(){
   Serial.print("  X:");Serial.print(data.giroX);
   Serial.print(" Y:");Serial.print(data.giroY);
   Serial.print(" Z:");Serial.println(data.giroZ);
+  Serial.println("|"); 
 }
 
 void  listening_bmp(){
   BMP_package data; 
   radio.read(&data, sizeof(data));
-
+  Serial.println("|  BMP "); 
   Serial.print("|  Temperatura: "); Serial.print(data.Temperatura);Serial.println("°C");
   Serial.print("|  Altitude: "); Serial.print(data.Altitude);Serial.println("m");
   Serial.print("|  Pressão Atmosférica: "); Serial.print(data.Pressao);Serial.println(" Pa");
+  Serial.println("|"); 
 }
 
 void listening_MQ135(){
   MQ135_package data;
   radio.read(&data, sizeof(data));
 
+  Serial.println("|  MQ135 "); 
   Serial.print("|  Monóxido de carbono: "); Serial.println(data.CO);
   Serial.print("|  Dióxido de carbono: "); Serial.println(data.CO2 + 400);
   Serial.print("|  Álcool: "); Serial.println(data.Alcohol);
   Serial.print("|  Amónio: "); Serial.println(data.NH4);
   Serial.print("|  Acetona: "); Serial.println(data.Acetona);
+  Serial.println("|"); 
 }
